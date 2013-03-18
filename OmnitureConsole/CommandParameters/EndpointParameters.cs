@@ -29,9 +29,9 @@ namespace OmnitureConsole.CommandParameters
             return uri.Uri.AbsoluteUri;
         }
 
-        static public OmnitureWebServicePortTypeClient GetEndpoint(EndpointParameters endpoint)
+        public OmnitureWebServicePortTypeClient GetClient()
         {
-            var client = ClientHelper.GetClient(endpoint.Credentials.Username, endpoint.Credentials.Secret, endpoint.Endpoint);
+            var client = ClientHelper.GetClient(Credentials.Username, Credentials.Secret, Endpoint);
             return client;
         }
     }

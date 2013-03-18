@@ -23,7 +23,7 @@ namespace OmnitureConsole
 
         public override int Run(string[] remainingArguments)
         {
-            var client = EndpointParameters.GetEndpoint(Endpoint);
+            var client = Endpoint.GetClient();
 
             //https://developer.omniture.com/en_US/documentation/omniture-administration/r-getreportsuites
             simple_report_suites_rval results = client.CompanyGetReportSuites(new[] {"standard"}, "");
