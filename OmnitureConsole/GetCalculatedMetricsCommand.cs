@@ -26,6 +26,7 @@ namespace OmnitureConsole
         {
             var client = Endpoint.GetClient();
 
+            //  https://developer.omniture.com/en_US/documentation/omniture-administration/r-getcalculatedmetrics
             var metrics = client.ReportSuiteGetCalculatedMetrics(new[] {Suite});
 
             foreach (var metric in metrics)
