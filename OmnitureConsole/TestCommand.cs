@@ -5,26 +5,25 @@ using System.Text;
 using ManyConsole;
 using Omniture;
 using Omniture.Api13;
+using OmnitureConsole.CommandParameters;
 
 namespace OmnitureConsole
 {
     public class TestCommand : ConsoleCommand
     {
-        public SavedApiCredentialsCommand Credentials;
-        public string Endpoint = "https://api.omniture.com/admin/1.3/";
+        public EndpointParameters Endpoint;
 
         public TestCommand()
         {
             this.IsCommand("test-api-access", "Visit https://developer.omniture.com/en_US/content_page/enterprise-api/c-get-web-service-access-to-the-enterprise-api to setup API access for a user and to find your API secret key.");
-            this.HasOption("e=", "Endpoint url used for requests.", v => Endpoint = v);
-
-            Credentials = new SavedApiCredentialsCommand();
-            Credentials.ApplyTo(this);
+            
+            Endpoint = new EndpointParameters();
+            Endpoint.ApplyTo(this);
         }
 
         public override int Run(string[] remainingArguments)
         {
-            var client = ClientHelper.GetClient(Credentials.Username, Credentials.Secret, Endpoint);
+            var client = EndpointParameters.GetEndpoint(Endpoint);
 
             //https://developer.omniture.com/en_US/documentation/omniture-administration/r-getreportsuites
             simple_report_suites_rval results = client.CompanyGetReportSuites(new[] {"standard"}, "");

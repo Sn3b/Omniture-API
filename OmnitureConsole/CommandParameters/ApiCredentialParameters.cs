@@ -1,22 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
+﻿using System.IO;
 using System.Linq;
-using System.Text;
 using ManyConsole;
 
-namespace OmnitureConsole
+namespace OmnitureConsole.CommandParameters
 {
-    public class SavedApiCredentialsCommand
+    public class ApiCredentialParameters
     {
         public const string FilenameForOmnitureSecret = "omniture-api-secret.txt";
 
         public string Username;
         public string Secret;
-
-        public SavedApiCredentialsCommand()
-        {
-        }
 
         public void ApplyTo(ConsoleCommand command)
         {
